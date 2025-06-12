@@ -115,6 +115,9 @@ class CountryCodePicker extends StatefulWidget {
   ///Header Text Alignment
   final MainAxisAlignment headerAlignment;
 
+  /// Padding for the dropdown arrow icon
+  final EdgeInsetsGeometry? arrowPadding;
+
   const CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -159,6 +162,7 @@ class CountryCodePicker extends StatefulWidget {
     this.headerTextStyle = const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     this.hideHeaderText = false,
     this.topBarPadding = const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20),
+    this.arrowPadding,
     Key? key,
   }) : super(key: key);
 
@@ -248,7 +252,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   flex: widget.alignLeft ? 0 : 1,
                   fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
                   child: Padding(
-                      padding: (widget.alignLeft
+                      padding: widget.arrowPadding ?? (widget.alignLeft
                           ? const EdgeInsets.only(right: 16.0, left: 8.0)
                           : const EdgeInsets.only(right: 16.0)),
                       child: Icon(
